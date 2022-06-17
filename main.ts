@@ -1,5 +1,6 @@
+let rounding = 0
 let strip = neopixel.create(DigitalPin.P8, 4, NeoPixelMode.RGB)
-basic.forever(function () {
+loops.everyInterval(1000, function () {
     control.waitMicros(1000)
     if (AlphaBot2.Ultrasonic() == 0 || AlphaBot2.Ultrasonic() > 30) {
         basic.showLeds(`
@@ -26,14 +27,17 @@ basic.forever(function () {
     } else if (AlphaBot2.Ultrasonic() < 22 && AlphaBot2.Ultrasonic() > 15) {
         basic.clearScreen()
         control.waitMicros(1000)
-        AlphaBot2.RunDelay(Dir.forward, 100, 1)
+        AlphaBot2.RunDelay(Dir.forward, 50, 1)
         basic.pause(200)
-        AlphaBot2.RunDelay(Dir.backward, 100, 1)
+        AlphaBot2.RunDelay(Dir.backward, 50, 1)
     } else if (AlphaBot2.Ultrasonic() <= 30 && AlphaBot2.Ultrasonic() > 22) {
         basic.clearScreen()
         control.waitMicros(1000)
-        AlphaBot2.RunDelay(Dir.turnLeft, 100, 3.7)
+        AlphaBot2.RunDelay(Dir.turnLeft, 50, 1.5)
     }
+})
+basic.forever(function () {
+	
 })
 basic.forever(function () {
     if (true) {
@@ -41,5 +45,12 @@ basic.forever(function () {
     }
 })
 basic.forever(function () {
+    basic.showNumber(AlphaBot2.Ultrasonic())
+    rounding = Math.round(5.5)
+})
+basic.forever(function () {
+	
+})
+control.inBackground(function () {
 	
 })
